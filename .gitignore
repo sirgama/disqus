@@ -1,0 +1,4 @@
+denv
+.env
+*pyc
+get-pip.py
