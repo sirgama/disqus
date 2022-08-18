@@ -3,5 +3,9 @@
 
 {% block content %}
 <h2>Homepage</h2>
-
+<ul>
+{% for room in rooms %}
+<li>{{room.id}}  --  {{room.name}}</li>
+{% endfor %}
+</ul>
 {% endblock %}
