@@ -2,6 +2,6 @@
 {% load static %}
 
 {% block content %}
-<h2>Room</h2>
-
+<a href="{% url 'home' %}"><h2>Room</h2></a>
+<h2>{{room.name}}</h2>
 {% endblock %}
