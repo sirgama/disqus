@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.0/solar/bootstrap.min.css" integrity="sha512-f4noExn47ew8g+h/pLiGQLq9g12q0qfbBDh/6OpHYYZm2VaQlwQxM99FZ+GBtLOvuxWVCu0dC/73D2tJTuDPjA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Lets Disqus</title>
 </head>
-<body>
+<body> 
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    {% if message.tags %} <p class="{{ message.tags }}">{{ message }}</p>{% endif %}
+    {% endfor %}
+</ul>
+{% endif %}
     {% block content %}
-    
+   
 
     {% endblock %}
 </body>
