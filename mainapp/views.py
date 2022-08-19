@@ -34,3 +34,13 @@ def newroom(request):
     }
     
     return render (request, 'mainapp/newroom.html', context)
+
+def updateRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    form = Roomform(instance=room)
+    
+    context = {
+        "room":room,
+        "form":form
+    }
+    return render(request, 'mainapp/newroom.html', context)
