@@ -1,12 +1,12 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav m-auto">
           <li class="nav-item">
             <a class="nav-link active" href="{% url 'home' %}">Home
               <span class="visually-hidden">(current)</span>
@@ -30,12 +30,22 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Separated link</a>
             </div>
-          </li>
-        </ul>
-        <form class="d-flex" method="GET" action="{% url 'home' %}">
+          </li> 
+           <form class="d-flex" method="GET" action="{% url 'home' %}">
           <input class="form-control me-sm-2" type="text" placeholder="Search for Rooms" name="q" pwa2-uuid="EDITOR/input-863-FCC-3BBCC-11C" pwa-fake-editor="">
           
         </form>
+        </ul>
+      
+      </div>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active btn btn-info" href="{% url 'log' %}">Login
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+        </ul>
       </div>
     </div>
   </nav>

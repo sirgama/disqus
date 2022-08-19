@@ -4,6 +4,13 @@ from .models import Room, Message, Topic
 from .forms import Roomform
 
 # Create your views here.
+def LogView(request):
+    
+    context = {
+        
+    }
+    return render(request, 'mainapp/login.html', context)
+
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q')!= None else ''
