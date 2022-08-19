@@ -9,6 +9,7 @@
 <hr>
 <li>@{{room.host.username}}</li>
 <a href="{% url 'update' room.id %}" class="btn btn-info">Edit room</a>
+<a href="" class="btn btn-warning">Delete room</a>
 <a href="{% url 'room' room.id %}"><li>{{room.id}}  --  {{room.name}}</li></a>
 <li>Topic: {{room.topic.name}}</li>
 <hr>
