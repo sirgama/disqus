@@ -32,9 +32,9 @@
             </div>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-sm-2" type="text" placeholder="Search" pwa2-uuid="EDITOR/input-863-FCC-3BBCC-11C" pwa-fake-editor="">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <form class="d-flex" method="GET" action="{% url 'home' %}">
+          <input class="form-control me-sm-2" type="text" placeholder="Search for Rooms" name="q" pwa2-uuid="EDITOR/input-863-FCC-3BBCC-11C" pwa-fake-editor="">
+          
         </form>
       </div>
     </div>
