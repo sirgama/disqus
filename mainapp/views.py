@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
-from .models import Room, Message
+from .models import Room, Message, Topic
 from .forms import Roomform
 
 # Create your views here.
 
 def home(request):
     room = Room.objects.all()
+    topic = Topic.objects.all()
     context = {
-        "rooms":room
+        "rooms":room,
+        "topics":topic
     }
     
     return render(request, 'mainapp/home.html', context)
