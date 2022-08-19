@@ -20,3 +20,11 @@ def room(request, pk):
         "message":message
     }
     return render(request, 'mainapp/room.html', context)
+
+def newroom(request):
+    
+    context = {
+        
+    }
+    
+    return render (request, 'mainapp/newroom.html', context)

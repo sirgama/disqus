@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'mainapp/navbar.html' %}
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+{% endblock %}

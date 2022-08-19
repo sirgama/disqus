@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+{% include 'mainapp/navbar.html' %}
 <a href="{% url 'home' %}"><h2>Room</h2></a>
 <h2>{{room.name}}</h2>
 <h6>Host: @{{room.host.username}}</h6>
