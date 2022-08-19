@@ -3,16 +3,30 @@
 
 {% block content %}
 {% include 'mainapp/navbar.html' %}
-<h2>Homepage</h2>
-<ul>
-{% for room in rooms %}
-<hr>
-<li>@{{room.host.username}}</li>
-<a href="{% url 'update' room.id %}" class="btn btn-info">Edit room</a>
-<a href="{%url 'delete' room.id %}" class="btn btn-warning">Delete room</a>
-<a href="{% url 'room' room.id %}"><li>{{room.id}}  --  {{room.name}}</li></a>
-<li>Topic: {{room.topic.name}}</li>
-<hr>
-{% endfor %}
-</ul>
+<h2 class="text-center">Homepage</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="text-center">Browse topics</h3>
+        </div>
+        <div class="col-md-3">
+            {% for room in rooms %}
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Host @{{room.host.username}}</h6>
+                  <p class="card-text">Topic: {{room.topic.name}}.</p>
+                  <a href="{% url 'update' room.id %}" class="card-link">Edit</a>
+                  <a href="{%url 'delete' room.id %}" class="card-link">Delete</a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
