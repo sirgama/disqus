@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -8,9 +9,12 @@ from .forms import Roomform
 
 # Create your views here.
 def LogView(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        
         try:
             user = User.objects.get(username=username)
         except:
@@ -22,6 +26,7 @@ def LogView(request):
             return redirect('home')
         else:
             messages.warning(request, 'Username or password Does Not Exist.')
+        
     context = {
         
     }
@@ -50,7 +55,7 @@ def room(request, pk):
         "message":message
     }
     return render(request, 'mainapp/room.html', context)
-
+@login_required(login_url='log')
 def newroom(request):
     form = Roomform()
     if request.method == 'POST':
@@ -65,6 +70,7 @@ def newroom(request):
     
     return render (request, 'mainapp/newroom.html', context)
 
+@login_required(login_url='log')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = Roomform(instance=room)
