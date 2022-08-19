@@ -38,6 +38,11 @@ def newroom(request):
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = Roomform(instance=room)
+    if request.method == 'POST':
+        form = Roomform(request.POST, instance=room)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     
     context = {
         "room":room,
