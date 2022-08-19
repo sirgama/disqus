@@ -4,4 +4,11 @@
 {% block content %}
 <a href="{% url 'home' %}"><h2>Room</h2></a>
 <h2>{{room.name}}</h2>
+<h6>Host: @{{room.host.username}}</h6>
+<h5>Messages
+    {% for mess in message %}
+        <li>{{mess.user.username}}</li>
+        <li>{{mess.body}}</li>
+    {% endfor %}
+</h5>
 {% endblock %}

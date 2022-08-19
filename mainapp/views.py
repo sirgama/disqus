@@ -1,25 +1,22 @@
 from django.shortcuts import render
+from .models import Room, Message
+
 
 # Create your views here.
-rooms = [
-    {"id":1, "name": "Nthe first"},
-    {"id":2, "name": "Second"},
-    {"id":3, "name": "Third one"}
-]
 
 def home(request):
+    room = Room.objects.all()
     context = {
-        "rooms":rooms
+        "rooms":room
     }
     
     return render(request, 'mainapp/home.html', context)
 
 def room(request, pk):
-    room = None
-    for i in rooms:
-        if i['id'] == int(pk):
-            room = i
+    room = Room.objects.get(id=pk)
+    message = Message.objects.filter(room__id = pk).all()
     context = {
-        "room" : room
+        "room" : room,
+        "message":message
     }
     return render(request, 'mainapp/room.html', context)
