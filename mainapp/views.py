@@ -49,3 +49,10 @@ def updateRoom(request, pk):
         "form":form
     }
     return render(request, 'mainapp/newroom.html', context)
+
+def delete(request, pk):
+    room = Room.objects.get(id=pk)
+    if request.method == 'POST':
+        room.delete()
+        return redirect('home')
+    return render(request, 'mainapp/del.html', {'obj':room})
