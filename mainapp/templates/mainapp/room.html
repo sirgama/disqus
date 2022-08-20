@@ -30,9 +30,11 @@
         </div>
         <div class="col-md-4">
             <div class="card  mb-3 mt-5" style="max-width: 20rem;">
-                <div class="card-header">Participants</div>
+                <div class="card-header">Members</div>
                 <div class="card-body">
-                  <p class="card-text"></p>
+                    {% for member in members %}
+                  <p class="card-text">{{member.username}}</p>
+                    {% endfor %}
                 </div>
               </div>
         </div>
