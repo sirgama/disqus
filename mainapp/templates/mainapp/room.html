@@ -3,23 +3,41 @@
 
 {% block content %}
 {% include 'mainapp/navbar.html' %}
-<a href="{% url 'home' %}"><h2>Room</h2></a>
-<h2>{{room.name}}</h2>
-<h6>Host: @{{room.host.username}}</h6>
-<h6>Room description</h6>
-<p>{{room.description}}</p>
-<h5>Messages</h5>
-    {% for mess in roomchats %}
-        <p>{{mess.user}}    </p>
-        <p>{{mess.body}}  <small>{{mess.created | timesince}} ago</small></p>
-    {% endfor %}
-    {% if request.user.is_authenticated %}
-<div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <a href="{% url 'home' %}"><h2>Room</h2></a>
+                <h2>{{room.name}}</h2>
+                <h6>Host: @{{room.host.username}}</h6>
+                <h6>Room description</h6>
+                <p>{{room.description}}</p>
+                <h5>Messages</h5>
+                    {% for mess in roomchats %}
+                        <p>{{mess.user}}    </p>
+                        <p>{{mess.body}}  <small>{{mess.created | timesince}} ago</small></p>
+                    {% endfor %}
+                    {% if request.user.is_authenticated %}
+                <div>
     <form action="" method="POST">
         {% csrf_token %}
         <input type="text" name="body" placeholder="Write your message here...">
     </form>
 
 </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card  mb-3 mt-5" style="max-width: 20rem;">
+                <div class="card-header">Participants</div>
+                <div class="card-body">
+                  <p class="card-text"></p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
     {% endif %}
 {% endblock %}
