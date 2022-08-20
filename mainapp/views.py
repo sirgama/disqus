@@ -78,7 +78,7 @@ def room(request, pk):
             room=room,
             body = request.POST.get('body')
         )
-        
+        room.members.save(request.user)
         return redirect('room', pk=room.id)
     context = {
         "room" : room,
