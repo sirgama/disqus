@@ -70,10 +70,10 @@ def home(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    message = Message.objects.filter(room__id = pk).all()
+    roomchats = room.message_set.all()
     context = {
         "room" : room,
-        "message":message
+        "roomchats":roomchats
     }
     return render(request, 'mainapp/room.html', context)
 @login_required(login_url='log')
