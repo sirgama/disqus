@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -117,9 +118,20 @@ def updateRoom(request, pk):
     }
     return render(request, 'mainapp/newroom.html', context)
 
+@login_required(login_url='log')
 def delete(request, pk):
     room = Room.objects.get(id=pk)
     if request.method == 'POST':
         room.delete()
         return redirect('home')
     return render(request, 'mainapp/del.html', {'obj':room})
+
+@login_required(login_url='log')
+def deleteMessage(request, pk):
+    text = Message.objects.get(id=pk)
+    if request.user!=text.user:
+        return HTTPResponse("You are not allowed to access this function")
+    if request.method == 'POST':
+        text.delete()
+        return redirect('home')
+    return render(request, 'mainapp/del.html', {'obj':text})
