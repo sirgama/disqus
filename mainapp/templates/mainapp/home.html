@@ -36,7 +36,16 @@
               {% endfor %}
         </div>
         <div class="col-md-3">
+            <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">Recent Activity</div>
+                <div class="card-body">
+                  <h4 class="card-title"></h4>
+                  {% for mess in texts %}
+                  <p class="card-text">{{mess.body}}</p>
 
+                  {% endfor %}
+                </div>
+              </div>
         </div>
     </div>
 </div>

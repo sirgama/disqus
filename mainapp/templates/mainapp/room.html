@@ -18,7 +18,9 @@
                     {% for mess in roomchats %}
                         <p>{{mess.user}}    </p>
                         <p>{{mess.body}}  <small>{{mess.created | timesince}} ago</small></p>
-                        <small><a href="{% url 'delete-txt' %}">Delete</a></small>
+                        {% if request.user == mess.user %}
+                        <small><a href="{% url 'delete-txt' mess.id %}">Delete</a></small>
+                        {% endif %}
                     {% endfor %}
                     {% if request.user.is_authenticated %}
                 <div>
