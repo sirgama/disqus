@@ -74,19 +74,19 @@ def home(request):
 def room(request, pk):
     room = Room.objects.get(id=pk)
     roomchats = room.message_set.all().order_by('-created')
-    membe = room.members.all()
+    participants = room.participants.all()
     if request.method == 'POST':
         message = Message.objects.create(
             user=request.user,
             room=room,
             body = request.POST.get('body')
         )
-        room.membe.save(membe=request.user)
+        room.participants.add(request.user)
         return redirect('room', pk=room.id)
     context = {
         "room" : room,
         "roomchats":roomchats,
-        "members":membe
+        "members":participants
     }
     return render(request, 'mainapp/room.html', context)
 @login_required(login_url='log')
