@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -59,6 +62,11 @@ DATABASES['default'].update(db_from_env)
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
+cloudinary.config( 
+  cloud_name = config('cloud_name'), 
+  api_key = config('api_key'), 
+  api_secret = config('api_secret') 
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
