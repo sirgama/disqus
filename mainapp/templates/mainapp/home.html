@@ -21,19 +21,7 @@
         </div>
         <div class="col-md-6">
            <a href="{% url 'newroom' %}"><h6 class="btn btn-primary">+ Create Room</h6></a> 
-            {% for room in rooms %}
-            <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title"><a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
-                  <h6 class="card-subtitle mb-2 text-muted">Host @{{room.host.username}}</h6>
-                  <p class="card-text">Topic: {{room.topic.name}}.</p>
-                  {% if request.user == room.host %}
-                  <a href="{% url 'update' room.id %}" class="card-link">Edit</a>
-                  <a href="{%url 'delete' room.id %}" class="card-link">Delete</a>
-                  {% endif %}
-                </div>
-              </div>
-              {% endfor %}
+            {% include 'mainapp/classcards.html' %}
         </div>
         <div class="col-md-3">
             {% include 'mainapp/activityfeed.html' %}
