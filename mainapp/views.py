@@ -94,8 +94,14 @@ def room(request, pk):
 
 def userProfie(request, pk):
     user = User.objects.get(id=pk)
+    rooms= user.room_set.all()
+    texts = user.message_set.all()
+    topics = Topic.objects.all()
     context = {
-        "user":user
+        "user":user,
+        "rooms":rooms,
+        "texts":texts,
+        "topics":topics
     }
     
     return render(request, 'mainapp/userprofile.html', context)
