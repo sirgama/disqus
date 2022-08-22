@@ -89,6 +89,17 @@ def room(request, pk):
         "members":participants
     }
     return render(request, 'mainapp/room.html', context)
+
+
+def userProfie(request):
+    
+    context = {
+        
+    }
+    
+    return render(request, 'mainapp/userprofile.html', context)
+
+
 @login_required(login_url='log')
 def newroom(request):
     form = Roomform()
