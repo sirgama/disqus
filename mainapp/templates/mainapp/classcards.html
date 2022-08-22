@@ -3,9 +3,34 @@
 {% for room in rooms %}
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title"><a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
-            <h6 class="card-subtitle mb-2 text-muted">Host <a href="{% url 'userprofile' room.host.username %}"> @{{room.host.username}}</a></h6>
-            <p class="card-text">Topic: {{room.topic.name}}.</p>
+            <div class="row d.flex justify-content-between">
+                <div class="col-md-11">
+                    <h4 class="card-title"><a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
+                </div>
+                <div class="col-md-1">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+           <hr>
+
+           <div class="row">
+            <div class="col-md-1">
+                <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            class="rounded-circle"
+            height="35"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          />
+            </div>
+            <div class="col-md-10">
+                <h6 class="card-text mb-4 me-3  text-muted"><a href="{% url 'userprofile' room.host.username %}"> @{{room.host.username}}</a> <span class="badge bg-light ms-4">HOST</span></h6>
+            </div>
+           </div>
+            
+            <p class="card-text"><span class="text-white fw-bold">Topic:</span>  {{room.topic.name}}.</p>
+            <h6 class="card-text fw-bold text-white">Description:</h6>
+            <p class="card-text">{{room.description}}</p>
             {% if request.user == room.host %}
             <a href="{% url 'update' room.id %}" class="card-link">Edit</a>
             <a href="{%url 'delete' room.id %}" class="card-link">Delete</a>
