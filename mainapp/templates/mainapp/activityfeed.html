@@ -6,7 +6,7 @@
       <h4 class="card-title"></h4>
       {% for mess in texts %}
       
-      <p class="card-text">{{mess.user.username}}</p>
+      <p class="card-text"><a href="{% url 'userprofile' mess.user.id %}"> @{{mess.user.username}}</a></p>
       <p class="card-text">{{mess.body}} - {{mess.created | timesince}} ago</p>
       {% endfor %}
     </div>
