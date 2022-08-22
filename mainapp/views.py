@@ -59,10 +59,11 @@ def registerPage(request):
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q')!= None else ''
-    all_messages = Message.objects.all().order_by('-created')
+    
     
     room = Room.objects.filter(Q(topic__name__icontains = q) | Q(name__icontains=q) | Q(description__icontains=q) | Q(host__username__icontains=q))
     topic = Topic.objects.all()
+    all_messages = Message.objects.filter(Q(room__topic__name__icontains=q)).order_by('-created')
     context = {
         "rooms":room,
         "topics":topic,
