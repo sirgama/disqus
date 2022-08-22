@@ -91,10 +91,10 @@ def room(request, pk):
     return render(request, 'mainapp/room.html', context)
 
 
-def userProfie(request):
-    
+def userProfie(request, pk):
+    user = User.objects.get(id=pk)
     context = {
-        
+        "user":user
     }
     
     return render(request, 'mainapp/userprofile.html', context)
