@@ -93,7 +93,7 @@ def room(request, pk):
 
 
 def userProfie(request, pk):
-    user = User.objects.get(id=pk)
+    user = User.objects.get(username=pk)
     rooms= user.room_set.all()
     texts = user.message_set.all()
     topics = Topic.objects.all()
