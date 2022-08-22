@@ -10,14 +10,7 @@
             <h3 class="text-center">Browse topics</h3>
             <hr>
             <a href="{% url 'home' %}">All Topics</a>
-            <ul class="list-group">
-                {% for topic in topics %}
-                   <a href="{% url 'home' %}?q={{topic.name}}"> <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{topic.name}}
-                    <span class="badge bg-primary rounded-pill">14</span>
-                    </li></a>
-                {% endfor %}
-            </ul>
+                {% include 'mainapp/topics.html' %}
         </div>
         <div class="col-md-6">
            <a href="{% url 'newroom' %}"><h6 class="btn btn-primary">+ Create Room</h6></a> 
