@@ -1,13 +1,20 @@
 {% load static %}
 
-<div class="card border-dark mb-3" style="max-width: 20rem;">
+<div class="card border-dark mb-3 mt-5" style="max-width: 20rem;">
     <div class="card-header">Recent Activity</div>
     <div class="card-body">
       <h4 class="card-title"></h4>
       {% for mess in texts %}
       
-      <p class="card-text"><a href="{% url 'userprofile' mess.user.username %}"> @{{mess.user.username}}</a></p>
-      <p class="card-text">{{mess.body}} - {{mess.created | timesince}} ago</p>
+      <p class="card-text"><a href="{% url 'userprofile' mess.user.username %}"> 
+        <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            class="rounded-circle"
+            height="35"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          /> <span class="ms-2">{{mess.user.username}}</span></a></p>
+      <p class="card-text ms-2">{{mess.body}} - {{mess.created | timesince}} ago</p>
       {% endfor %}
     </div>
   </div>

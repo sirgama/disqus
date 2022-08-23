@@ -4,7 +4,7 @@
     {% for topic in topics %}
        <a href="{% url 'home' %}?q={{topic.name}}"> <li class="list-group-item d-flex justify-content-between align-items-center">
         {{topic.name}}
-        <span class="badge bg-primary rounded-pill">0</span>
+        <span class="badge bg-dark ">view</span>
         </li></a>
     {% endfor %}
 </ul>
